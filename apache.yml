@@ -1,0 +1,16 @@
+---
+ - name: installing apache
+   hosts: all
+   remote_user: ansible
+   become: true
+   ignore_errors: true
+   tasks: 
+    - name: installing
+      yum: 
+        name: httpd
+        state: latest
+    - name: starting service
+      service:
+         name: httpd
+         state: started
+         enabled: yes
